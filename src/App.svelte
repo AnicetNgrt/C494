@@ -1,8 +1,17 @@
 <script>
-  import Hello from './HelloComponent/index.svelte'
-  import ByeBye from './ByeByeComponent/index.svelte'
-  export let name
+	import { ThemeWrapper, ThemeToggle } from 'svelte-themer'
 </script>
+  
+<ThemeWrapper>
+	<main>
+		<h1>svelte themer</h1>
+		<ThemeToggle />
+	</main>
+</ThemeWrapper>
 
-<Hello {name} />
-<ByeBye {name} />
+<style>
+	:global(html) {
+		background-color: var(--theme-colors-background, initial);
+		color: var(--theme-colors-text, initial);
+	}
+</style>

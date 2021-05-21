@@ -1,83 +1,105 @@
-![Build Status](https://github.com/patoi/svelte-component-library-template/workflows/Test/badge.svg) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/) ![](https://github.com/patoi/svelte-component-library-template/workflows/Auto%20merge%20Dependabot%20updates/badge.svg)
+*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
-# Svelte Components template
+---
 
-**You can create your own component library to your applications with this template.**
+# svelte app
 
-A base for building Svelte component library.
+This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
-Original work is https://github.com/sveltejs/component-template
-
-## Using
-
-**On GitHub:**
-
-`Use this template` button on top right.
-
-Read more: [Creating a repository from a template](https://help.github.com/en/articles/creating-a-repository-from-a-template)
-
-**CLI:**
-
-1. Clone it with [degit](https://github.com/Rich-Harris/degit)
+To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npx degit patoi/svelte-component-library-template svelte-component-library-template
-cd svelte-component-library-template
-npm install # or yarn
+npx degit sveltejs/template svelte-app
+cd svelte-app
 ```
 
-2. Add your component's code to [src/](./src/) as directory, e.g.: [src/HelloComponent/](./src/HelloComponent/) (or add your component directly to [src/](./src/)).
+*Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
-3. Export the new component to apps in [src/index.js](./src/index.js)
 
-4. [src/test.js](./src/test.js) and [src/App.svelte](./src/App.svelte) are for testing purposes:
+## Get started
 
--   add component to the [src/App.svelte](./src/App.svelte)
--   add component's properties to [src/test.js](./src/test.js)
+Install the dependencies...
 
-4. Create your test cases to your component:
-
--   add tests to [test/](./test/) directory
-
-## Development
-
-1. `npm install`
-
-2. `npm run dev` :
-
--   **build components on change** and
--   **serves** from `public/` directory at `http://localhost:5000`
--   and **handling livereload**
-
-3. `npm test` : test runner
-
-For changing the view of the test page use [public/global.css](./public/global.css) and [public/index.html](./public/index.html)
-
-## Using components in app
-
-https://github.com/rollup/rollup-plugin-svelte#pkgsvelte
-
-**Tip:** if you are a developer of the _component library,_ then you can install it _once_ as **devDependencies** to app with `npm i -D <path-to-your-components>` , all change will appear immediately if you use livereload in app.
-
-Import _component library_ into your app in `App.svelte` :
-
-```html
-<script>
-  import { ByeBye, Hello } from 'svelte-component-library-template'
-  export let name
-</script>
-
-<Hello {name} />
-<ByeBye {name} />
+```bash
+cd svelte-app
+npm install
 ```
 
-## Technical background
+...then start [Rollup](https://rollupjs.org):
 
-More: https://github.com/sveltejs/sapper-template/blob/master/README.md#using-external-components
+```bash
+npm run dev
+```
 
--   `svelte` https://svelte.dev
--   `nightwatch` for testing: https://nightwatchjs.org
--   `eslint` and `prettier` for formatting and linting
--   `rollupjs` for bundling: https://rollupjs.org
+Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
-Supported Node.js v12 LTS and v14 LTS.
+By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+
+If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
+
+## Building and running in production mode
+
+To create an optimised version of the app:
+
+```bash
+npm run build
+```
+
+You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+
+
+## Single-page app mode
+
+By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
+
+If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+
+```js
+"start": "sirv public --single"
+```
+
+## Using TypeScript
+
+This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
+
+```bash
+node scripts/setupTypeScript.js
+```
+
+Or remove the script via:
+
+```bash
+rm scripts/setupTypeScript.js
+```
+
+## Deploying to the web
+
+### With [Vercel](https://vercel.com)
+
+Install `vercel` if you haven't already:
+
+```bash
+npm install -g vercel
+```
+
+Then, from within your project folder:
+
+```bash
+cd public
+vercel deploy --name my-project
+```
+
+### With [surge](https://surge.sh/)
+
+Install `surge` if you haven't already:
+
+```bash
+npm install -g surge
+```
+
+Then, from within your project folder:
+
+```bash
+npm run build
+surge public my-project.surge.sh
+```
